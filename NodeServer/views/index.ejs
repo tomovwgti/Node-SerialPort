@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="/javascripts/chat.js"></script>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <h1>Node-SerialPortのサンプルプログラム</h1>
+    <div id="connectId"></div>
+    <div id="type"></div>
+    <br>
+    <input type="text" id="message" value="">
+    <input type="button" value="メッセージを送る" onclick="SendMsg()">
+    <input type="button" value="切断する" onclick="DisConnect()">
+    <div id="receiveMsg"></div>
+  </body>
+</html>
