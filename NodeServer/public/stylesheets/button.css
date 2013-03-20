@@ -1,0 +1,121 @@
+/* iPhoneっぽいオン・オフボタン */
+.switch {
+  position: relative;
+  width: 100px;
+  font-size: 14px;
+  margin: 0 auto;
+}
+
+.switch input[type="checkbox"] + label {
+  overflow: hidden;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  display: block;
+  padding: 5px 0;
+  padding-left: 45%;
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0, #dedede), color-stop(0.5, #eee), color-stop(0.5, #fafafa), color-stop(1, #fefefe));
+  background: -moz-linear-gradient(top, #dedede, #eee 50%, #fafafa 50%, #fefefe 100%);
+  border: 1px solid #bebebe;
+  border-radius: 5px;
+  -webkit-box-shadow: inset 0 2px 3px rgba(0,0,0,.2);
+  box-shadow: inset 0 2px 3px rgba(0,0,0,.2);
+  color: #7f7f7f;
+  font-weight: bold;
+  text-shadow: 0 1px #fff;
+  text-align: center;
+  -webkit-animation-name: switchAnimeOFF;
+  -webkit-animation-duration: 200ms;
+  -webkit-animation-timing-function: linear;
+  -webkit-animation-iteration-count: 1;
+}
+
+.switch input[type="checkbox"] + label span {
+  overflow: hidden;
+  line-height: 100em;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: block;
+  width: 45%;
+  height: 100%;
+  border: 1px solid #999;
+  -webkit-box-shadow: inset 0 1px 0 #fff, 2px 0 2px rgba(0,0,0,.2);
+  box-shadow: inset 0 1px 0 #fff, 2px 0 2px rgba(0,0,0,.2);
+  border-radius: 5px;
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0, #d7d7d7), color-stop(1, #fbfbfb));
+  background: -moz-linear-gradient(top, #d7d7d7, #fbfbfb 100%);
+  -webkit-animation-name: switchAnimeOFF;
+  -webkit-animation-duration: 200ms;
+  -webkit-animation-timing-function: linear;
+  -webkit-animation-iteration-count: 1;
+}
+
+.switch input[type="checkbox"]:checked + label span {
+  left: auto;
+  right: 0;
+  -webkit-box-shadow: inset 0 1px 0 #fff, -2px 0 2px rgba(0,0,0,.2);
+  box-shadow: inset 0 1px 0 #fff, -2px 0 2px rgba(0,0,0,.2);
+  -webkit-animation-name: switchAnimeON;
+}
+
+.switch label:after {
+  content: "OFF";
+}
+
+.switch input[type="checkbox"]:checked + label:after {
+  content: "ON";
+  color: #fff;
+  text-shadow: 0 -1px 0 #0e203e;
+}
+
+.switch input[type="checkbox"]:checked + label {
+  padding: 5px 0;
+  padding-right: 45%;
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0, #3379f1), color-stop(0.5, #3680f8), color-stop(0.5, #4e91f3), color-stop(1, #75acfc));
+  background: -moz-linear-gradient(top, #3379f1, #3680f8 50%, #4e91f3 50%, #75acfc 100%);
+  color: #fff;
+  text-shadow: 0 -1px 0 #0e203e;
+  -webkit-box-shadow: inset 0 2px 3px rgba(0,0,0,.3);
+  box-shadow: inset 0 2px 3px rgba(0,0,0,.3);
+  border-color: #0b3a8b #5186d5 #5186d5;
+  -webkit-animation-name: switchAnimeON;
+}
+
+.switch input[type="checkbox"] {
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
+  opacity : 0;
+  position: absolute;
+  z-index: 10;
+  top: -3px;
+  left: -3px;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+}
+
+/* アニメーション設定 */
+@-webkit-keyframes switchAnimeON {
+  0% {
+    text-indent: -80px;
+    right: 40px;
+  }
+  100% {
+    text-indent: 0;
+    right: 0;
+  }
+}
+
+@-webkit-keyframes switchAnimeOFF {
+  0% {
+    text-indent: 80px;
+    left: 38px;
+  }
+  100% {
+    text-indent: 0;
+    left: 0;
+  }
+}
+
+

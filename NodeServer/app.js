@@ -52,12 +52,12 @@ io.sockets.on('connection', function(socket) {
 
     // メッセージを受けたときの処理
     socket.on('message', function(data) {
-        console.log(data.value);
+        console.log(data.value.led);
         // つながっているクライアント全員に送信
         socket.broadcast.json.emit('message', { value: data.value });
 
-        console.log('Client sent us: ' + data.value);
-        sp.write(data.value, function(err, bytesWritten) {
+        console.log('Client sent us: ' + data.value.led);
+        sp.write(data.value.led, function(err, bytesWritten) {
             console.log('bytes written: ', bytesWritten);
         });
     });

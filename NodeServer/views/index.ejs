@@ -4,17 +4,25 @@
     <title><%= title %></title>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
     <script src="/socket.io/socket.io.js"></script>
-    <script src="/javascripts/chat.js"></script>
+    <script src="/javascripts/jquery.knob.js"></script>
+    <script src="/javascripts/temperature.js"></script>
     <link rel='stylesheet' href='/stylesheets/style.css' />
+    <link rel='stylesheet' href='/stylesheets/button.css' />
   </head>
   <body>
-    <h1>Node-SerialPortのサンプルプログラム</h1>
-    <div id="connectId"></div>
-    <div id="type"></div>
-    <br>
-    <input type="text" id="message" value="">
-    <input type="button" value="メッセージを送る" onclick="SendMsg()">
-    <input type="button" value="切断する" onclick="DisConnect()">
-    <div id="receiveMsg"></div>
+    <h1>Node-SerialPortのサンプル</h1>
+    <H1><span>ただいまの気温</span></H1>
+    <section>
+        <div id="jquery-knob">
+                <input id="knob" data-readOnly=true data-cursor=true data-fgColor="#66EE66" data-width="150" data-thickness=.3 data-min="0" data-max="40">
+        </div>
+    </section>
+    <section>
+    <H1><span>LEDの点灯/消灯</span></H1>
+        <p class="switch">
+            <input type="checkbox" name="switch" id="switch"/>
+                <label for="switch"><span></span></label>
+        </p>
+    </section>
   </body>
 </html>

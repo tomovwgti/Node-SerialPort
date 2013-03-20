@@ -1,8 +1,22 @@
-body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+body
+{
+    background:#fff;
+    color:#333;
+    text-align:center;
+    font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+    color:#545454;
+    padding:0;
+    margin:0;
+    border:0;
+    line-height:1.4;
 }
 
-a {
-  color: #00B7FF;
+h1
+{
+    font-weight:lighter;
+    font-family:georgia, times new roman, times, georgia, palatino, serif;
+    text-align:center;
+    margin-top:0.6em;
+    color:#111;
+    font-size:2em;
 }
