@@ -78,14 +78,20 @@ io.sockets.on('connection', function(socket) {
 });
 
 // data from Serial port
-sp.on('data', function(temp) {
-    var data = new Object();
-    var mbRec = new Buffer(temp, 'utf');
-    mbRec = mbRec.toString();
-    console.log('temp: ' + mbRec);
-    data.temperature = DeleteLineFeed(mbRec);
+sp.on('data', function(input) {
+
+    var buffer = new Buffer(input, 'utf');
+    var jsonData;
+    try {
+        jsonData = JSON.parse(buffer);
+        console.log('temp: ' + jsonData.temp);
+        console.log('led: ' + jsonData.led);
+    } catch(e) {
+        // データ受信がおかしい場合無視する
+        return;
+    }
     // つながっているクライアント全員に送信
-    io.sockets.json.emit('message', { value: data });
+    io.sockets.json.emit('message', { value: jsonData });
 });
 
 sp.on('close', function(err) {
@@ -95,14 +101,3 @@ sp.on('close', function(err) {
 sp.on('open', function(err) {
     console.log('port opened');
 });
-
-function DeleteLineFeed(myLen) {
-    var newLen = '';
-    for(var i=0; i<myLen.length; i++){
-        text = escape(myLen.substring(i, i+1));
-        if(text != "%0D" && text != "%0A"){
-            newLen += myLen.substring(i, i+1);
-        }
-    }
-    return(newLen);
-}

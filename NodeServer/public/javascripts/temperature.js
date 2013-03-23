@@ -26,10 +26,16 @@ $(function() {
 
     // メッセージを受けたとき
     socket.on('message', function(msg) {
-        console.log(msg.value.temperature);
-        if (typeof msg.value.temperature != undefined) {
+        if (typeof msg.value.temp != undefined) {
             // ノブの更新
-            $('#knob').val(msg.value.temperature).trigger('change');
+            $('#knob').val(msg.value.temp).trigger('change');
+        }
+        if (typeof msg.value.led != undefined) {
+            if ( msg.value.led === 1) {
+                $('#switch').attr('checked', 'checked');
+            } else {
+                $('#switch').removeAttr('checked');
+            }
         }
     });
 
