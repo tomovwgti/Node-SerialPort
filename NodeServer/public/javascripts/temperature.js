@@ -26,6 +26,7 @@ $(function() {
 
     // メッセージを受けたとき
     socket.on('message', function(msg) {
+        console.log(msg.value.temperature);
         if (typeof msg.value.temperature != undefined) {
             // ノブの更新
             $('#knob').val(msg.value.temperature).trigger('change');

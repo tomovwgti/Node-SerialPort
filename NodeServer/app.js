@@ -14,7 +14,7 @@ var app = express()
     , io = require('socket.io').listen(server);
 
 // Serial Port
-var portName = '/dev/tty.usbmodemfd13441';
+var portName = '/dev/tty.usbmodemfd13431';
 var sp = new serialport(portName, {
     baudRate: 115200,
     dataBits: 8,
@@ -83,7 +83,7 @@ sp.on('data', function(temp) {
     var mbRec = new Buffer(temp, 'utf');
     mbRec = mbRec.toString();
     console.log('temp: ' + mbRec);
-    data.temperature = mbRec;
+    data.temperature = DeleteLineFeed(mbRec);
     // つながっているクライアント全員に送信
     io.sockets.json.emit('message', { value: data });
 });

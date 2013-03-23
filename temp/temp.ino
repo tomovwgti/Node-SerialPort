@@ -5,8 +5,6 @@
 int value; // アナログ入力値(0～203)
 int tempC   = 0; // 摂氏値( ℃ )
 char str[10]; // 数字（文字列）の受信用配列
-String on = "ON";
-String off = "OFF";
 
 void setup() {
   pinMode(TEMP, INPUT);
@@ -22,14 +20,13 @@ void loop() {
   Serial.print(tempC);
   
   // シリアルからのデータ受信
-  recvStr(str);
-  Serial.println("");
-  Serial.println(String(str));
-  Serial.println(on.equals(String(str)));
+  memset(str, 0, 10);
+  char *p = &str[0];
+  recvStr(p);
 
-  if (strcmp("ON", str) == 0) {
+  if (strcmp("ON", p) == 0) {
     digitalWrite(LED, HIGH);
-  } else if (strcmp("OFF", str) == 0) {
+  } else if (strcmp("OFF", p) == 0) {
     digitalWrite(LED, LOW);
   }
 
@@ -46,5 +43,4 @@ void recvStr(char *buf)
       buf[i] = c;
       i++;
   }
-//  buf[i] = '\0';
 }
