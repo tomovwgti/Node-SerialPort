@@ -14,7 +14,8 @@ var app = express()
     , io = require('socket.io').listen(server);
 
 // Serial Port
-var portName = '/dev/tty.usbmodemfd13431';
+var portName = '/dev/tty.usbmodemfd13431'; // Mac環境
+//var portName = '/dev/ttyACM0'; // RaspberryPi環境
 var sp = new serialport(portName, {
     baudRate: 115200,
     dataBits: 8,
