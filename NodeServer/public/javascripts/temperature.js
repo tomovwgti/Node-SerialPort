@@ -31,6 +31,7 @@ $(function() {
             $('#knob').val(msg.value.temp).trigger('change');
         }
         if (typeof msg.value.led != undefined) {
+            // LEDの状態を反映
             if ( msg.value.led === 1) {
                 $('#switch').attr('checked', 'checked');
             } else {
