@@ -6,7 +6,7 @@
 var express = require('express')
     , routes = require('./routes')
     , path = require('path')
-    , serialport = require('serialport').SerialPort;
+    , serialport = require('serialport');
 
 var app = express()
     , http = require('http')
@@ -16,12 +16,13 @@ var app = express()
 // Serial Port
 var portName = '/dev/tty.usbmodemfd13431'; // Mac環境
 //var portName = '/dev/ttyACM0'; // RaspberryPi環境
-var sp = new serialport(portName, {
+var sp = new serialport.SerialPort(portName, {
     baudRate: 115200,
     dataBits: 8,
     parity: 'none',
     stopBits: 1,
-    flowControl: false
+    flowControl: false,
+	parser: serialport.parsers.readline("\n")
 });
 
 app.configure(function(){
@@ -81,7 +82,7 @@ io.sockets.on('connection', function(socket) {
 // data from Serial port
 sp.on('data', function(input) {
 
-    var buffer = new Buffer(input, 'utf');
+    var buffer = new Buffer(input, 'utf8');
     var jsonData;
     try {
         jsonData = JSON.parse(buffer);

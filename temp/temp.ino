@@ -36,7 +36,7 @@ void loop() {
 
   // 送信用のJSONデータの作成
   sprintf(json, "{\"temp\":%d, \"led\":%d}", tempC, digitalRead(LED));
-  Serial.print(json);  
+  Serial.println(json);
 
   delay(5000);
 }
